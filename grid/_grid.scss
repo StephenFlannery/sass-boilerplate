@@ -1,0 +1,8 @@
+.row{
+	width: 100%;
+	max-width: 62.5rem;
+	
+	&--wide{
+		max-width: 75rem;
+	}
+}

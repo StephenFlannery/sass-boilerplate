@@ -1,0 +1,44 @@
+.styleGuide h6 small{
+    
+}
+.example{
+    position: relative;
+    &:before{
+        content: 'Example';
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+    }
+}
+code{
+    
+}
+.code{
+    position: relative;
+    &:before{
+        content: 'Code';
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+    }
+    code{
+        
+    }
+}
+pre.code{
+    
+}
+.colors{
+    
+    .box{
+        
+        div{
+            
+            h6{
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,129 @@
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy: xy){
+    @if $xy == xy{
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    @else if $xy == x{
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @else if $xy == y{
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+}
+
+// antialiasing mode font rendering
+
+@mixin font-smoothing{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// breakpoints
+
+$S: 0;
+$M: 640px;
+$L: 1024px;
+$XL: 1200px;
+$XXL: 1440px;
+$XXXL: 1600px;
+
+// media queries
+
+@mixin MQ($canvas){
+    @if $canvas == S{
+        @media only screen and (min-width: 0){
+            @content;
+        }
+    }
+    @else if $canvas == M{
+        @media only screen and (min-width: 640px){
+            @content;
+        }
+    }
+    @else if $canvas == L{
+        @media only screen and (min-width: 770px){
+            @content;
+        }
+    }
+    @else if $canvas == XL{
+        @media only screen and (min-width: 1200px){
+            @content;
+        }
+    }
+    @else if $canvas == XXL{
+        @media only screen and (min-width: 1440px){
+            @content;
+        }
+    }
+    @else if $canvas == XXXL{
+        @media only screen and (min-width: 1600px){
+            @content;
+        }
+    }
+}
+
+// Pseudo Element
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    position: $pos;
+    display: $display;
+    content: $content;
+}
+
+// @include triangle within a pseudo element and add positioning properties (ie. top, left)
+// $direction: up, down, left, right
+
+@mixin triangle($direction, $size: 6px, $color: #222222){
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+    @if ($direction == 'up'){
+        border-right: 1/2*$size solid transparent;
+        border-bottom: $size solid $color;
+        border-left: 1/2*$size solid transparent;
+    }
+    @else if ($direction == 'down'){
+        border-top: $size solid $color;
+        border-right: 1/2*$size solid transparent;
+        border-left: 1/2*$size solid transparent;
+    }
+    @else if ($direction == 'left'){
+        border-top: 1/2*$size solid transparent;
+        border-right: $size solid $color;
+        border-bottom: 1/2*$size solid transparent;
+    }
+    @else if ($direction == 'right'){
+        border-top: 1/2*$size solid transparent;
+        border-bottom: 1/2*$size solid transparent;
+        border-left: $size solid $color;
+    }
+}
+
+// Placeholders
+@mixin input-placeholder{
+    &.placeholder{
+        @content;
+    }
+    &:-moz-placeholder{
+        @content;
+    }
+    &::-moz-placeholder{
+        @content;
+    }
+    &:-ms-input-placeholder{
+        @content;
+    }
+    &::-webkit-input-placeholder{
+        @content;
+    }
+}

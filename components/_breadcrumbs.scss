@@ -1,0 +1,14 @@
+.bread_crumbs{
+	color: lighten($black, 15%);
+	a{
+		color: $black;
+
+		&.active{
+			color: $primary;	
+		}
+
+		&:hover{
+			color: lighten($primary, 10%);
+		}
+	}
+}
